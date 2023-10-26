@@ -8,3 +8,7 @@ We have to light a LED, and set-up an esp32.
 
 Here is the GPIOS image:
 ![GPIO](GPIOS.webp)
+
+### Reminders about electricity
+
+
