@@ -1,28 +1,30 @@
 #include <Arduino.h>
 
-// put function declarations here:
-// int myFunction(int, int);
+const int ledPin = 27;
 
-void setup() {
-  // put your setup code here, to run once:
-  // int result = myFunction(2, 3);
+void setup()
+{
+  // Initialize serial communication
   Serial.begin(115200);
-  pinMode(27, OUTPUT);
+
+  // Set the LED pin as an output
+  pinMode(ledPin, OUTPUT);
 }
 
-void loop() {
-  // Vary the LED brightness by changing the PWM duty cycle
-  for (int brightness = 0; brightness <= 255; brightness++) {
-    analogWrite(27, brightness);  // Set the LED brightness
-    delay(10);  // Wait for a short time
-  }
-  for (int brightness = 255; brightness >= 0; brightness--) {
-    analogWrite(27, brightness);  // Set the LED brightness
-    delay(10);  // Wait for a short time
+void fadeLED(int startBrightness, int endBrightness, int step, int delayTime)
+{
+  for (int brightness = startBrightness; brightness != endBrightness; brightness += step)
+  {
+    analogWrite(ledPin, brightness);
+    delay(delayTime);
   }
 }
 
-// put function definitions here:
-// int myFunction(int x, int y) {
-//   return x + y;
-// }
+void loop()
+{
+  // Fade LED from off to full brightness
+  fadeLED(0, 256, 1, 10);
+
+  // Fade LED from full brightness to off
+  fadeLED(255, -1, -1, 10);
+}
