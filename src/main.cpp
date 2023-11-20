@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <microDS18B20.h>
-#include "./notes.h"
+#include "mario.h"
 
 int buzzer = 32;  // the pin that the buzzer is attached to
 int buzzer2 = 33; // the second buzzer
@@ -26,21 +26,6 @@ void loop()
     if (state == LOW)
     {
       Serial.println("Motion detected!");
-
-      // Mario theme melody
-      int melody[] = {
-          NOTE_E7, NOTE_E7, 0, NOTE_E7,
-          0, NOTE_C7, NOTE_E7, 0,
-          NOTE_G7, 0, 0, 0,
-          NOTE_G6, 0, 0, 0};
-
-      // Durations for the Mario theme melody
-      int durations[] = {
-          12, 12, 12, 12,
-          12, 12, 12, 12,
-          12, 12, 12, 12,
-          12, 12, 12, 12};
-
       // Simple drum beat
       int drumPattern[] = {NOTE_C2, 0, NOTE_C2, 0, NOTE_C2, 0, NOTE_C2, 0};
       playJingle(melody, durations, drumPattern, sizeof(drumPattern) / sizeof(drumPattern[0]), sizeof(melody) / sizeof(melody[0]));

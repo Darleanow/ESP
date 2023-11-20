@@ -45,7 +45,7 @@ Upload your code to the ESP32 through your chosen development environment, such 
 
 Once the code is uploaded, you should observe the LED blinking at regular intervals.
 
-## Objectif 2: light a led thanks to a sensor
+## Objective 2: light a led thanks to a sensor
 
 In this section, we will demonstrate how to illuminate an LED with a sensor and using the ESP32.
 
