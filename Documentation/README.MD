@@ -64,13 +64,7 @@ like in the photo below:
 
 ![ledAndSensor circuit](ledAndSensor.JPG)
 
-## Objectif 3: generate music with a sensor
-
-In this section, we will demonstrate how to turn on a buzzer with a sensor and using the ESP32.
-
-### step 1: keep the same circuit but switch the led with the buzzer
-
-Luckly the resistance was same with the led and the buzzer :
+Luckly the resistance was the good one and this is the calcul to check that :
 
     U = R . I
 <=> R = U / I
@@ -79,6 +73,12 @@ Luckly the resistance was same with the led and the buzzer :
 
 <=> R = 3,3KOhm
 
+## Objectif 3: generate music with a sensor
+
+In this section, we will demonstrate how to turn on a buzzer with a sensor and using the ESP32.
+
+### step 1: keep the same circuit but switch the led with the buzzer
+
 there is the photo of the circuit:
 
 ![buzzerAndSensor circuit](buzzerAndSensor.JPG)
@@ -86,4 +86,20 @@ there is the photo of the circuit:
 ### step 2: define some note and make a real music
 
 To make a real music we need to define the notes before to use theme: 
+
+these notes are frequencies that we have defined in int :
+
+Exemple :
+```cpp
+#define NOTE_B0 31
+#define NOTE_C1 33
+#define NOTE_CS1 35
+#define NOTE_D1 37
+#define NOTE_DS1 39
+#define NOTE_E1 41
+#define NOTE_F1 44
+#define NOTE_FS1 46
+#define NOTE_G1 49
+```
+
 
