@@ -44,3 +44,46 @@ Upload your code to the ESP32 through your chosen development environment, such 
 ### Step 5: Observing the Outcome
 
 Once the code is uploaded, you should observe the LED blinking at regular intervals.
+
+## Objectif 2: light a led thanks to a sensor
+
+In this section, we will demonstrate how to illuminate an LED with a sensor and using the ESP32.
+
+### step 1: repeat the same five step
+
+We need to repeat the same five step as in the firs part and add the sensor in the circuit.
+
+### step 2: add the sensor
+
+To aad the sensor we need to connect his three pin to the circuit:
+first one is the ground
+secound one is the out
+last one is the VCC 5-12 VDC
+
+like in the photo below:
+
+![ledAndSensor circuit](ledAndSensor.JPG)
+
+## Objectif 3: generate music with a sensor
+
+In this section, we will demonstrate how to turn on a buzzer with a sensor and using the ESP32.
+
+### step 1: keep the same circuit but switch the led with the buzzer
+
+Luckly the resistance was same with the led and the buzzer :
+
+    U = R . I
+<=> R = U / I
+
+<=> R = 3,3 / 1.10^-3
+
+<=> R = 3,3KOhm
+
+there is the photo of the circuit:
+
+![buzzerAndSensor circuit](buzzerAndSensor.JPG)
+
+### step 2: define some note and make a real music
+
+To make a real music we need to define the notes before to use theme: 
+
