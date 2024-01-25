@@ -93,10 +93,17 @@
 #include "Server.h"
 #include "mario.h"
 
+//FIXME: PLEASE FOR FUCK SAKE ENZO
+void toggleMotionDetection() {
+    motionSensor.toggleState();
+}
+
 Sensor motionSensor(26);
 Buzzer buzzer(32), buzzer2(33);
 Melody melodyPlayer(buzzer2, buzzer);
-server_web webServer("Formation", "Et@@g210573", 80);
+server_web webServer("Formation", "Et@@g210573", 80, toggleMotionDetection());
+
+
 
 void setup() {
     Serial.begin(115200);
@@ -106,7 +113,7 @@ void setup() {
 void loop() {
     webServer.handleClient(); // Handle web server clients
 
-    if (motionSensor.isMotionDetected()) {
+    if (motionSensor.isMotionDetected() && motionSensor.getState()) {
         Serial.println("Motion detected!");
         int drumPattern[] = {NOTE_C2, 0, NOTE_C2, 0, NOTE_C2, 0, NOTE_C2, 0};
         melodyPlayer.playJingle(melody, durations, drumPattern, sizeof(drumPattern) / sizeof(drumPattern[0]), sizeof(melody) / sizeof(melody[0]));
