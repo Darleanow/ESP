@@ -1,5 +1,5 @@
 /**
- * @file Sensor.h
+ * @file sensor.h
  * @brief Contains the definition of the Sensor class for motion detection.
  *
  * This file declares the Sensor class, which is used for detecting motion through a digital sensor
