@@ -27,6 +27,10 @@ public:
         return state;
     }
 
+    void toggleState() {
+        state = !state;
+    }
+
 private:
     int sensorPin;
     bool state;
