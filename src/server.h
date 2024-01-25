@@ -1,3 +1,10 @@
+/**
+ * @file server_web.h
+ * @brief Defines the server_web class for handling a web server on an ESP32 device.
+ *
+ * This class sets up a web server on the ESP32, allowing control over various functionalities
+ * such as motion detection and music playback through HTTP requests.
+ */
 #ifndef SERVER_WEB_H
 #define SERVER_WEB_H
 
@@ -5,20 +12,46 @@
 #include <WebServer.h>
 #include <functional>
 
-// FIXME: xDDDDDDDDD ????????
+/**
+ * @typedef void (*ToggleFunction)()
+ * @brief Defines a function pointer type for toggling sensor state.
+ */
 typedef void (*ToggleFunction)();
-// ezebarti pour un autre
+
+/**
+ * @typedef std::function<bool()> ToggleMusicFunction
+ * @brief Defines a function pointer type for toggling music playback state.
+ */
 typedef std::function<bool()> ToggleMusicFunction;
 
+/**
+ * @class server_web
+ * @brief Manages a web server on an ESP32 device.
+ *
+ * This class handles the initialization and management of a web server for controlling
+ * different components like sensors and buzzers through a web interface.
+ */
 class server_web
 {
 public:
+    /**
+     * @brief Constructs a new server_web object.
+     *
+     * @param ssid The SSID of the WiFi network to connect to.
+     * @param password The password of the WiFi network.
+     * @param port The port on which the web server will listen.
+     * @param sensorCallback Function pointer to toggle the sensor state.
+     * @param musicCallback Function object to toggle the music playback state.
+     */
     server_web(const char *ssid, const char *password, int port,
                ToggleFunction sensorCallback, ToggleMusicFunction musicCallback)
         : network_ssid(ssid), network_password(password), server(port),
           toggleSensor(sensorCallback), toggleMusic(musicCallback),
           isMusicPlaying(false) {}
 
+    /**
+     * @brief Initializes the web server and connects to WiFi.
+     */
     void begin()
     {
         WiFi.begin(network_ssid, network_password);
@@ -46,17 +79,23 @@ public:
         server.begin();
     }
 
+    /**
+     * @brief Handles incoming client requests.
+     *
+     * This function should be called in the main loop to continuously check for
+     * and respond to HTTP requests from clients.
+     */
     void handleClient()
     {
         server.handleClient();
     }
 
 private:
-    const char *network_ssid;
-    const char *network_password;
-    WebServer server;
+    const char *network_ssid; ///< The SSID of the WiFi network.
+    const char *network_password; ///< The password for the WiFi network.
+    WebServer server; ///< Instance of WebServer to manage HTTP requests.
 
-    String getHTML()
+    String getHTML() ///< The HTML that will be used for the server page.
     {
         String html = "<!DOCTYPE html>";
         html += "<html>";
@@ -169,9 +208,9 @@ private:
         return html;
     }
 
-    bool isMusicPlaying;
-    ToggleFunction toggleSensor;
-    ToggleMusicFunction toggleMusic;
+    bool isMusicPlaying; ///< Track if music is playing.
+    ToggleFunction toggleSensor; ///< Toggle movement sensor.
+    ToggleMusicFunction toggleMusic; ///< Toggle music play.
 };
 
 #endif // SERVER_WEB_H
