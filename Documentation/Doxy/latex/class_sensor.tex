@@ -1,0 +1,86 @@
+\doxysection{Sensor Class Reference}
+\hypertarget{class_sensor}{}\label{class_sensor}\index{Sensor@{Sensor}}
+
+
+Manages a motion sensor.  
+
+
+
+
+{\ttfamily \#include $<$sensor.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sensor_a7796d72d5e102de73a47f116cacc732d}{Sensor}} (int pin)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_sensor}{Sensor} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sensor_a096f1ebb16382e0f7566dfc8faaf4c86}{is\+Motion\+Detected}} ()
+\begin{DoxyCompactList}\small\item\em Checks if motion is detected by the sensor. \end{DoxyCompactList}\item 
+\Hypertarget{class_sensor_ab687b1dd4e4ecb1d806bf947cedc9b76}\label{class_sensor_ab687b1dd4e4ecb1d806bf947cedc9b76} 
+void {\bfseries turn\+On} ()
+\begin{DoxyCompactList}\small\item\em Activates the sensor to detect motion. \end{DoxyCompactList}\item 
+\Hypertarget{class_sensor_a7e0dadfc3dcde4c6c7b20d0c0ae09082}\label{class_sensor_a7e0dadfc3dcde4c6c7b20d0c0ae09082} 
+void {\bfseries turn\+Off} ()
+\begin{DoxyCompactList}\small\item\em Deactivates the sensor to stop detecting motion. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sensor_a37d043695ec338d43af90a1ac8d28145}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current operational state of the sensor. \end{DoxyCompactList}\item 
+\Hypertarget{class_sensor_ad30c7f8e126494118c51dc672ef8f92b}\label{class_sensor_ad30c7f8e126494118c51dc672ef8f92b} 
+void {\bfseries toggle\+State} ()
+\begin{DoxyCompactList}\small\item\em Toggles the operational state of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a motion sensor. 
+
+This class encapsulates the functionality of a motion sensor. It provides methods to check if motion is detected and to control the operational state of the sensor. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sensor_a7796d72d5e102de73a47f116cacc732d}\label{class_sensor_a7796d72d5e102de73a47f116cacc732d} 
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{Sensor()}{Sensor()}}
+{\footnotesize\ttfamily Sensor\+::\+Sensor (\begin{DoxyParamCaption}\item[{int}]{pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_sensor}{Sensor} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & The microcontroller pin to which the sensor is connected. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sensor_a37d043695ec338d43af90a1ac8d28145}\label{class_sensor_a37d043695ec338d43af90a1ac8d28145} 
+\index{Sensor@{Sensor}!getState@{getState}}
+\index{getState@{getState}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily bool Sensor\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current operational state of the sensor. 
+
+\begin{DoxyReturn}{Returns}
+true if the sensor is active, false if it is inactive. 
+\end{DoxyReturn}
+\Hypertarget{class_sensor_a096f1ebb16382e0f7566dfc8faaf4c86}\label{class_sensor_a096f1ebb16382e0f7566dfc8faaf4c86} 
+\index{Sensor@{Sensor}!isMotionDetected@{isMotionDetected}}
+\index{isMotionDetected@{isMotionDetected}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{isMotionDetected()}{isMotionDetected()}}
+{\footnotesize\ttfamily bool Sensor\+::is\+Motion\+Detected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if motion is detected by the sensor. 
+
+\begin{DoxyReturn}{Returns}
+true if motion is detected, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/ehugo/\+Documents/\+Platform\+IO/\+Projects/\+ESP/src/\mbox{\hyperlink{sensor_8h}{sensor.\+h}}\end{DoxyCompactItemize}

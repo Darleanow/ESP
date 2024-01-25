@@ -1,0 +1,69 @@
+\doxysection{Buzzer Class Reference}
+\hypertarget{class_buzzer}{}\label{class_buzzer}\index{Buzzer@{Buzzer}}
+
+
+Manages a buzzer for playing tones.  
+
+
+
+
+{\ttfamily \#include $<$buzzer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_buzzer_aa7e46d651dfac39d6cd6a4466e8e1a13}{Buzzer}} (int pin)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_buzzer}{Buzzer} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_buzzer_ae2a25494b2bac014255e3f09a47ec17d}{play\+Tone}} (int frequency, int duration)
+\begin{DoxyCompactList}\small\item\em Plays a tone through the buzzer. \end{DoxyCompactList}\item 
+\Hypertarget{class_buzzer_a60e7439353659cccc72ab618c2a41e90}\label{class_buzzer_a60e7439353659cccc72ab618c2a41e90} 
+void {\bfseries stop\+Tone} ()
+\begin{DoxyCompactList}\small\item\em Stops any tone currently being played through the buzzer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a buzzer for playing tones. 
+
+This class encapsulates the functionality of a buzzer. It provides methods to play a tone at a specific frequency and duration, and to stop the tone. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_buzzer_aa7e46d651dfac39d6cd6a4466e8e1a13}\label{class_buzzer_aa7e46d651dfac39d6cd6a4466e8e1a13} 
+\index{Buzzer@{Buzzer}!Buzzer@{Buzzer}}
+\index{Buzzer@{Buzzer}!Buzzer@{Buzzer}}
+\doxysubsubsection{\texorpdfstring{Buzzer()}{Buzzer()}}
+{\footnotesize\ttfamily Buzzer\+::\+Buzzer (\begin{DoxyParamCaption}\item[{int}]{pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_buzzer}{Buzzer} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & The microcontroller pin to which the buzzer is connected. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_buzzer_ae2a25494b2bac014255e3f09a47ec17d}\label{class_buzzer_ae2a25494b2bac014255e3f09a47ec17d} 
+\index{Buzzer@{Buzzer}!playTone@{playTone}}
+\index{playTone@{playTone}!Buzzer@{Buzzer}}
+\doxysubsubsection{\texorpdfstring{playTone()}{playTone()}}
+{\footnotesize\ttfamily void Buzzer\+::play\+Tone (\begin{DoxyParamCaption}\item[{int}]{frequency,  }\item[{int}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plays a tone through the buzzer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & The frequency of the tone in hertz. \\
+\hline
+{\em duration} & The duration to play the tone in milliseconds. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/ehugo/\+Documents/\+Platform\+IO/\+Projects/\+ESP/src/\mbox{\hyperlink{buzzer_8h}{buzzer.\+h}}\end{DoxyCompactItemize}

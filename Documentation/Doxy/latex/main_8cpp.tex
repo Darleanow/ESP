@@ -1,0 +1,92 @@
+\doxysection{C\+:/\+Users/ehugo/\+Documents/\+Platform\+IO/\+Projects/\+ESP/src/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/main.cpp@{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/main.cpp}}
+
+
+Main entry point for the ESP32 web server and sensor application.  
+
+
+{\ttfamily \#include "{}sensor.\+h"{}}\newline
+{\ttfamily \#include "{}buzzer.\+h"{}}\newline
+{\ttfamily \#include "{}melody.\+h"{}}\newline
+{\ttfamily \#include "{}server.\+h"{}}\newline
+{\ttfamily \#include "{}mario.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a1555b23bc6d077433233a652fddda926}{toggle\+Motion\+Detection}} ()
+\begin{DoxyCompactList}\small\item\em Toggles the motion detection state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{main_8cpp_a974e3825a97e3aafbfda647e78617618}{toggle\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Toggles the music playback state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Setup function for initializing components. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Main loop of the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_ac21faf09390ff0b4eeca0de6953e8b7e}\label{main_8cpp_ac21faf09390ff0b4eeca0de6953e8b7e} 
+\mbox{\hyperlink{class_sensor}{Sensor}} {\bfseries motion\+Sensor} (26)
+\begin{DoxyCompactList}\small\item\em Motion sensor connected to pin 26. \end{DoxyCompactList}\item 
+\Hypertarget{main_8cpp_ae4b6e74510b4201138d2c5ef494fb803}\label{main_8cpp_ae4b6e74510b4201138d2c5ef494fb803} 
+\mbox{\hyperlink{class_buzzer}{Buzzer}} {\bfseries buzzer} (32)
+\item 
+\Hypertarget{main_8cpp_ac4ba2e2cf4caee0a46f4ba7bb1330cb6}\label{main_8cpp_ac4ba2e2cf4caee0a46f4ba7bb1330cb6} 
+\mbox{\hyperlink{class_buzzer}{Buzzer}} {\bfseries buzzer2} (33)
+\begin{DoxyCompactList}\small\item\em Buzzers connected to pins 32 and 33. \end{DoxyCompactList}\item 
+\Hypertarget{main_8cpp_a7278ddece5fbb62ba1ecba0e1b9e3d28}\label{main_8cpp_a7278ddece5fbb62ba1ecba0e1b9e3d28} 
+\mbox{\hyperlink{class_melody}{Melody}} {\bfseries melody\+Player} (\mbox{\hyperlink{main_8cpp_ac4ba2e2cf4caee0a46f4ba7bb1330cb6}{buzzer2}}, buzzer)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_melody}{Melody} player using the two buzzers. \end{DoxyCompactList}\item 
+\Hypertarget{main_8cpp_a22cdcbf268c0330edaa71d0cb33e2dd3}\label{main_8cpp_a22cdcbf268c0330edaa71d0cb33e2dd3} 
+\mbox{\hyperlink{classserver__web}{server\+\_\+web}} {\bfseries web\+Server} ("{}Formation"{}, "{}Et@@g210573"{}, 80, \&\mbox{\hyperlink{main_8cpp_a1555b23bc6d077433233a652fddda926}{toggle\+Motion\+Detection}}, \mbox{\hyperlink{main_8cpp_a974e3825a97e3aafbfda647e78617618}{toggle\+Music}})
+\begin{DoxyCompactList}\small\item\em Web server instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main entry point for the ESP32 web server and sensor application. 
+
+This file contains the setup and loop functions for an ESP32-\/based system, which integrates a motion sensor, buzzers for playing melodies, and a web server for remote control. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{main_8cpp_afe461d27b9c48d5921c00d521181f12f} 
+\index{main.cpp@{main.cpp}!loop@{loop}}
+\index{loop@{loop}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main loop of the program. 
+
+Continuously checks for and handles incoming web server clients. It also checks the state of the motion sensor and plays a melody if motion is detected. \Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d} 
+\index{main.cpp@{main.cpp}!setup@{setup}}
+\index{setup@{setup}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Setup function for initializing components. 
+
+This function is called once when the program starts. It initializes the serial communication, the web server, and other components. \Hypertarget{main_8cpp_a1555b23bc6d077433233a652fddda926}\label{main_8cpp_a1555b23bc6d077433233a652fddda926} 
+\index{main.cpp@{main.cpp}!toggleMotionDetection@{toggleMotionDetection}}
+\index{toggleMotionDetection@{toggleMotionDetection}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{toggleMotionDetection()}{toggleMotionDetection()}}
+{\footnotesize\ttfamily void toggle\+Motion\+Detection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Toggles the motion detection state. 
+
+This function is a callback used for toggling the motion sensor\textquotesingle{}s state from the web server. \Hypertarget{main_8cpp_a974e3825a97e3aafbfda647e78617618}\label{main_8cpp_a974e3825a97e3aafbfda647e78617618} 
+\index{main.cpp@{main.cpp}!toggleMusic@{toggleMusic}}
+\index{toggleMusic@{toggleMusic}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{toggleMusic()}{toggleMusic()}}
+{\footnotesize\ttfamily bool toggle\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Toggles the music playback state. 
+
+\begin{DoxyReturn}{Returns}
+The new state of the music playback (true for playing, false for stopped). 
+\end{DoxyReturn}

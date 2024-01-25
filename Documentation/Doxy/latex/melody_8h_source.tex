@@ -1,0 +1,58 @@
+\doxysection{melody.\+h}
+\hypertarget{melody_8h_source}{}\label{melody_8h_source}\index{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/melody.h@{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/melody.h}}
+\mbox{\hyperlink{melody_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ MELODY\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ MELODY\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buzzer_8h}{buzzer.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_melody}{Melody}}}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_melody_ad480dbde34066ac2bdeeed1cee2e1b73}{Melody}}(\mbox{\hyperlink{class_buzzer}{Buzzer}}\ \&melodyBuzzer,\ \mbox{\hyperlink{class_buzzer}{Buzzer}}\ \&drumBuzzer)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ :\ melodyBuzzer(melodyBuzzer),\ drumBuzzer(drumBuzzer)\ \{\}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_melody_a15b8df974c9cbfdce01e5331c28dbec0}{playJingle}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{mario_8h_ada4fd20bd5c86d6104eb34988f81278f}{melody}}[],\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mario_8h_a963e2b18c3ecce230b1206cf34bb6b46}{durations}}[],\ \textcolor{keywordtype}{int}\ drumPattern[],\ \textcolor{keywordtype}{int}\ drumLength,\ \textcolor{keywordtype}{int}\ melodyLength)}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ isPlaying.store(\textcolor{keyword}{true});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ thisNote\ =\ 0;\ thisNote\ <\ melodyLength\ \&\&\ isPlaying.load();\ thisNote++)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ noteDuration\ =\ 1000\ /\ \mbox{\hyperlink{mario_8h_a963e2b18c3ecce230b1206cf34bb6b46}{durations}}[thisNote];}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ melodyBuzzer.\mbox{\hyperlink{class_buzzer_ae2a25494b2bac014255e3f09a47ec17d}{playTone}}(\mbox{\hyperlink{mario_8h_ada4fd20bd5c86d6104eb34988f81278f}{melody}}[thisNote],\ noteDuration);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thisNote\ <\ drumLength\ \&\&\ drumPattern[thisNote]\ !=\ 0)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ drumBuzzer.\mbox{\hyperlink{class_buzzer_ae2a25494b2bac014255e3f09a47ec17d}{playTone}}(drumPattern[thisNote],\ noteDuration);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ delay(noteDuration\ *\ 1.30);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ melodyBuzzer.\mbox{\hyperlink{class_buzzer_a60e7439353659cccc72ab618c2a41e90}{stopTone}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ drumBuzzer.\mbox{\hyperlink{class_buzzer_a60e7439353659cccc72ab618c2a41e90}{stopTone}}();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ isPlaying.store(\textcolor{keyword}{false});}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_melody_adff780abc4a585f181ddf1a9e4dbecea}{stopMusic}}()}
+\DoxyCodeLine{00067\ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ isPlaying.store(\textcolor{keyword}{false});}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_melody_a72e8765e7abc8bd5817a07fbff12a777}{toggleMusic}}()}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ currentState\ =\ isPlaying.load();}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ isPlaying.store(!currentState);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !currentState;}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{class_buzzer}{Buzzer}}\&\ melodyBuzzer;\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{class_buzzer}{Buzzer}}\&\ drumBuzzer;\ }
+\DoxyCodeLine{00086\ \ \ \ \ std::atomic<bool>\ isPlaying;\ }
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MELODY\_H}}
+
+\end{DoxyCode}

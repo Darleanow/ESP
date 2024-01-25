@@ -1,0 +1,183 @@
+\doxysection{server.\+h}
+\hypertarget{server_8h_source}{}\label{server_8h_source}\index{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/server.h@{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/server.h}}
+\mbox{\hyperlink{server_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SERVER\_WEB\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SERVER\_WEB\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <WiFi.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <WebServer.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{server_8h_a8a2c776e7e8460f1b2e17155de1643ff}{ToggleFunction}})();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ std::function<bool()>\ \mbox{\hyperlink{server_8h_ad6a209a556e722628a7c76efe97fb18b}{ToggleMusicFunction}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classserver__web}{server\_web}}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classserver__web_a0acb12decb3affe82045359d77ce171a}{server\_web}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *ssid,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *password,\ \textcolor{keywordtype}{int}\ port,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{server_8h_a8a2c776e7e8460f1b2e17155de1643ff}{ToggleFunction}}\ sensorCallback,\ \mbox{\hyperlink{server_8h_ad6a209a556e722628a7c76efe97fb18b}{ToggleMusicFunction}}\ musicCallback)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ :\ network\_ssid(ssid),\ network\_password(password),\ server(port),}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ toggleSensor(sensorCallback),\ toggleMusic(musicCallback),}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ isMusicPlaying(false)\ \{\}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classserver__web_acdf424ae4dbbadc823f716b6416176ed}{begin}}()}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ WiFi.begin(network\_ssid,\ network\_password);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (WiFi.status()\ !=\ WL\_CONNECTED)}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ delay(500);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\(\backslash\)nConnected\ to\ WiFi.\ IP\ address:\ "{}});}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ Serial.println(WiFi.localIP());}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ server.on(\textcolor{stringliteral}{"{}/"{}},\ [\textcolor{keyword}{this}]()}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ server.send(200,\ \textcolor{stringliteral}{"{}text/html"{}},\ getHTML());\ \});}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ server.on(\textcolor{stringliteral}{"{}/toggleMotion"{}},\ [\textcolor{keyword}{this}]()}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ toggleSensor();}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ server.send(200,\ \textcolor{stringliteral}{"{}text/plain"{}},\ \textcolor{stringliteral}{"{}Motion\ Detection\ Toggled"{}});\ \});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ server.on(\textcolor{stringliteral}{"{}/playMusic"{}},\ [\textcolor{keyword}{this}]()}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ musicState\ =\ toggleMusic();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ server.send(200,\ \textcolor{stringliteral}{"{}text/plain"{}},\ musicState\ ?\ \textcolor{stringliteral}{"{}Music\ Playing"{}}\ :\ \textcolor{stringliteral}{"{}Music\ Stopped"{}});\ \});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ server.begin();}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classserver__web_a1e4ebcb095d4ab70a8f8f47dca00b3eb}{handleClient}}()}
+\DoxyCodeLine{00089\ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ server.handleClient();}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *network\_ssid;\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *network\_password;\ }
+\DoxyCodeLine{00096\ \ \ \ \ WebServer\ server;\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ String\ getHTML()\ }
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ String\ html\ =\ \textcolor{stringliteral}{"{}<!DOCTYPE\ html>"{}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}<html>"{}};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ <head>"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ <style>"{}};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ body\ \{"{}};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ margin:\ 0;"{}};}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ background-\/color:\ rgb(26,\ 26,\ 26);"{}};}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ font-\/family:\ \(\backslash\)"{}\ Segoe\ UI\ \(\backslash\)"{},\ Tahoma,\ Geneva,\ Verdana,\ sans-\/serif;"{}};}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ h1\ \{"{}};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ color:\ white;"{}};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ text-\/align:\ center;"{}};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ button\ \{"{}};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ margin:\ 10px;"{}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ padding:\ 10px;"{}};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ border-\/radius:\ 4px;"{}};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ .title\_section\ \{"{}};}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ color:\ rgb(185,\ 185,\ 185);"{}};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ .sections\ \{"{}};}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ margin-\/left:\ 15px;"{}};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ .button\ \{"{}};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ background-\/color:\ \#222;"{}};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ border-\/radius:\ 4px;"{}};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ border-\/style:\ none;"{}};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ box-\/sizing:\ border-\/box;"{}};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ color:\ \#fff;"{}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ cursor:\ pointer;"{}};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ display:\ inline-\/block;"{}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ font-\/family:\ \(\backslash\)"{}\ Farfetch\ Basis\ \(\backslash\)"{},\ \(\backslash\)"{}\ Helvetica\ Neue\ \(\backslash\)"{},\ Arial,\ sans-\/serif;"{}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ font-\/size:\ 16px;"{}};}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ font-\/weight:\ 700;"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ line-\/height:\ 1.5;"{}};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ margin:\ 0;"{}};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ min-\/height:\ 44px;"{}};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ min-\/width:\ 240px;"{}};}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ max-\/width:\ 240px;"{}};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ outline:\ none;"{}};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ overflow:\ hidden;"{}};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ padding:\ 9px\ 20px\ 8px;"{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ position:\ relative;"{}};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ text-\/align:\ center;"{}};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ text-\/transform:\ none;"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ user-\/select:\ none;"{}};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/webkit-\/user-\/select:\ none;"{}};}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ touch-\/action:\ manipulation;"{}};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ .button:hover,"{}};}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ .button:focus\ \{"{}};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ opacity:\ 0.75;"{}};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ hr\ \{"{}};}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ height:\ 1px;"{}};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ background-\/color:\ \#3a3a3a;"{}};}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ border:\ none;"{}};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ margin-\/left:\ -\/15px;"{}};}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ </style>"{}};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ <title>ESP32\ Web\ Server</title>"{}};}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ </head>"{}};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ <body>"{}};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ <h1>Welcome\ to\ our\ project\ Dashboard!</h1>"{}};}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ <hr\ />"{}};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ <div\ class=\(\backslash\)"{}\ sections\ \(\backslash\)"{}>"{}};}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <h3\ class=\(\backslash\)"{}\ title\_section\ \(\backslash\)"{}>Manage\ Components</h3>"{}};}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <button"{}};}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ class=\(\backslash\)"{}\ button\ \(\backslash\)"{}"{}};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ id=\(\backslash\)"{}\ motionButton\ \(\backslash\)"{}"{}};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ onclick=\(\backslash\)"{}\ toggleMotionDetection()\ \(\backslash\)"{}"{}};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ >"{}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ Disable\ Motion\ Detection"{}};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ </button>"{}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <button\ class=\(\backslash\)"{}\ button\ \(\backslash\)"{}\ id=\(\backslash\)"{}\ musicButton\ \(\backslash\)"{}\ onclick=\(\backslash\)"{}\ togglePlayMusic()\ \(\backslash\)"{}>"{}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ Play\ Music"{}};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ </button>"{}};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <hr\ />"{}};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ <h3\ class=\(\backslash\)"{}\ title\_section\ \(\backslash\)"{}>Be\ an\ artist</h3>"{}};}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ </div>"{}};}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ <script>"{}};}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ var\ isMotionDetectionEnabled\ =\ true;"{}};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ var\ isMusicPlaying\ =\ false;"{}};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ function\ toggleMotionDetection()\ \{"{}};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ isMotionDetectionEnabled\ =\ !isMotionDetectionEnabled;"{}};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ fetch(\(\backslash\)"{}/toggleMotion\(\backslash\)"{});"{}};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ document.getElementById(\(\backslash\)"{}motionButton\(\backslash\)"{}).innerText\ ="{}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ isMotionDetectionEnabled"{}};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ \ \ ?\ \(\backslash\)"{}\ Disable\ Motion\ Detection\ \(\backslash\)"{}"{}};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ \ \ :\ \(\backslash\)"{}\ Enable\ Motion\ Detection\ \(\backslash\)"{};"{}};}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ function\ togglePlayMusic()\ \{"{}};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ isMusicPlaying\ =\ !isMusicPlaying;"{}};}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ fetch(\(\backslash\)"{}/playMusic\ \(\backslash\)"{});"{}};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ document.getElementById(\(\backslash\)"{}musicButton\(\backslash\)"{}).innerText\ =\ isMusicPlaying"{}};}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ ?\ \(\backslash\)"{}\ Stop\ Music\ \(\backslash\)"{}"{}};}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ :\ \(\backslash\)"{}\ Play\ Music\ \(\backslash\)"{};"{}};}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \}"{}};}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ \ \ </script>"{}};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}\ \ </body>"{}};}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ html\ +=\ \textcolor{stringliteral}{"{}</html>"{}};}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ html;}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{bool}\ isMusicPlaying;\ }
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{server_8h_a8a2c776e7e8460f1b2e17155de1643ff}{ToggleFunction}}\ toggleSensor;\ }
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{server_8h_ad6a209a556e722628a7c76efe97fb18b}{ToggleMusicFunction}}\ toggleMusic;\ }
+\DoxyCodeLine{00214\ \};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SERVER\_WEB\_H}}
+
+\end{DoxyCode}

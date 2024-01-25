@@ -1,0 +1,92 @@
+\doxysection{Melody Class Reference}
+\hypertarget{class_melody}{}\label{class_melody}\index{Melody@{Melody}}
+
+
+Manages the playback of melodies and rhythms.  
+
+
+
+
+{\ttfamily \#include $<$melody.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_melody_ad480dbde34066ac2bdeeed1cee2e1b73}{Melody}} (\mbox{\hyperlink{class_buzzer}{Buzzer}} \&melody\+Buzzer, \mbox{\hyperlink{class_buzzer}{Buzzer}} \&drum\+Buzzer)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_melody}{Melody} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_melody_a15b8df974c9cbfdce01e5331c28dbec0}{play\+Jingle}} (int \mbox{\hyperlink{mario_8h_ada4fd20bd5c86d6104eb34988f81278f}{melody}}\mbox{[}$\,$\mbox{]}, int \mbox{\hyperlink{mario_8h_a963e2b18c3ecce230b1206cf34bb6b46}{durations}}\mbox{[}$\,$\mbox{]}, int drum\+Pattern\mbox{[}$\,$\mbox{]}, int drum\+Length, int melody\+Length)
+\begin{DoxyCompactList}\small\item\em Plays a jingle using the melody and drum buzzers. \end{DoxyCompactList}\item 
+\Hypertarget{class_melody_adff780abc4a585f181ddf1a9e4dbecea}\label{class_melody_adff780abc4a585f181ddf1a9e4dbecea} 
+void {\bfseries stop\+Music} ()
+\begin{DoxyCompactList}\small\item\em Stops the music playback. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_melody_a72e8765e7abc8bd5817a07fbff12a777}{toggle\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Toggles the music playback state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the playback of melodies and rhythms. 
+
+This class handles the playing of melodies and rhythms through two buzzers. It allows for starting, stopping, and toggling the playback of a musical tune. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_melody_ad480dbde34066ac2bdeeed1cee2e1b73}\label{class_melody_ad480dbde34066ac2bdeeed1cee2e1b73} 
+\index{Melody@{Melody}!Melody@{Melody}}
+\index{Melody@{Melody}!Melody@{Melody}}
+\doxysubsubsection{\texorpdfstring{Melody()}{Melody()}}
+{\footnotesize\ttfamily Melody\+::\+Melody (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_buzzer}{Buzzer}} \&}]{melody\+Buzzer,  }\item[{\mbox{\hyperlink{class_buzzer}{Buzzer}} \&}]{drum\+Buzzer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_melody}{Melody} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em melody\+Buzzer} & Reference to the \doxylink{class_buzzer}{Buzzer} object used for playing melody notes. \\
+\hline
+{\em drum\+Buzzer} & Reference to the \doxylink{class_buzzer}{Buzzer} object used for playing drum beats. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_melody_a15b8df974c9cbfdce01e5331c28dbec0}\label{class_melody_a15b8df974c9cbfdce01e5331c28dbec0} 
+\index{Melody@{Melody}!playJingle@{playJingle}}
+\index{playJingle@{playJingle}!Melody@{Melody}}
+\doxysubsubsection{\texorpdfstring{playJingle()}{playJingle()}}
+{\footnotesize\ttfamily void Melody\+::play\+Jingle (\begin{DoxyParamCaption}\item[{int}]{melody\mbox{[}$\,$\mbox{]},  }\item[{int}]{durations\mbox{[}$\,$\mbox{]},  }\item[{int}]{drum\+Pattern\mbox{[}$\,$\mbox{]},  }\item[{int}]{drum\+Length,  }\item[{int}]{melody\+Length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plays a jingle using the melody and drum buzzers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em melody} & Array of melody notes. \\
+\hline
+{\em durations} & Array of note durations corresponding to the melody notes. \\
+\hline
+{\em drum\+Pattern} & Array of drum notes. \\
+\hline
+{\em drum\+Length} & Length of the drum pattern array. \\
+\hline
+{\em melody\+Length} & Length of the melody array. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_melody_a72e8765e7abc8bd5817a07fbff12a777}\label{class_melody_a72e8765e7abc8bd5817a07fbff12a777} 
+\index{Melody@{Melody}!toggleMusic@{toggleMusic}}
+\index{toggleMusic@{toggleMusic}!Melody@{Melody}}
+\doxysubsubsection{\texorpdfstring{toggleMusic()}{toggleMusic()}}
+{\footnotesize\ttfamily bool Melody\+::toggle\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Toggles the music playback state. 
+
+\begin{DoxyReturn}{Returns}
+The new state of the music playback (true for playing, false for stopped). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/ehugo/\+Documents/\+Platform\+IO/\+Projects/\+ESP/src/\mbox{\hyperlink{melody_8h}{melody.\+h}}\end{DoxyCompactItemize}

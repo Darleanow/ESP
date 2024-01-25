@@ -1,0 +1,70 @@
+\doxysection{server\+\_\+web Class Reference}
+\hypertarget{classserver__web}{}\label{classserver__web}\index{server\_web@{server\_web}}
+
+
+Manages a web server on an ESP32 device.  
+
+
+
+
+{\ttfamily \#include $<$server.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classserver__web_a0acb12decb3affe82045359d77ce171a}{server\+\_\+web}} (const char \texorpdfstring{$\ast$}{*}ssid, const char \texorpdfstring{$\ast$}{*}password, int port, \mbox{\hyperlink{server_8h_a8a2c776e7e8460f1b2e17155de1643ff}{Toggle\+Function}} sensor\+Callback, \mbox{\hyperlink{server_8h_ad6a209a556e722628a7c76efe97fb18b}{Toggle\+Music\+Function}} music\+Callback)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{classserver__web}{server\+\_\+web} object. \end{DoxyCompactList}\item 
+\Hypertarget{classserver__web_acdf424ae4dbbadc823f716b6416176ed}\label{classserver__web_acdf424ae4dbbadc823f716b6416176ed} 
+void {\bfseries begin} ()
+\begin{DoxyCompactList}\small\item\em Initializes the web server and connects to Wi\+Fi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classserver__web_a1e4ebcb095d4ab70a8f8f47dca00b3eb}{handle\+Client}} ()
+\begin{DoxyCompactList}\small\item\em Handles incoming client requests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a web server on an ESP32 device. 
+
+This class handles the initialization and management of a web server for controlling different components like sensors and buzzers through a web interface. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classserver__web_a0acb12decb3affe82045359d77ce171a}\label{classserver__web_a0acb12decb3affe82045359d77ce171a} 
+\index{server\_web@{server\_web}!server\_web@{server\_web}}
+\index{server\_web@{server\_web}!server\_web@{server\_web}}
+\doxysubsubsection{\texorpdfstring{server\_web()}{server\_web()}}
+{\footnotesize\ttfamily server\+\_\+web\+::server\+\_\+web (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{ssid,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{password,  }\item[{int}]{port,  }\item[{\mbox{\hyperlink{server_8h_a8a2c776e7e8460f1b2e17155de1643ff}{Toggle\+Function}}}]{sensor\+Callback,  }\item[{\mbox{\hyperlink{server_8h_ad6a209a556e722628a7c76efe97fb18b}{Toggle\+Music\+Function}}}]{music\+Callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{classserver__web}{server\+\_\+web} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ssid} & The SSID of the Wi\+Fi network to connect to. \\
+\hline
+{\em password} & The password of the Wi\+Fi network. \\
+\hline
+{\em port} & The port on which the web server will listen. \\
+\hline
+{\em sensor\+Callback} & Function pointer to toggle the sensor state. \\
+\hline
+{\em music\+Callback} & Function object to toggle the music playback state. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classserver__web_a1e4ebcb095d4ab70a8f8f47dca00b3eb}\label{classserver__web_a1e4ebcb095d4ab70a8f8f47dca00b3eb} 
+\index{server\_web@{server\_web}!handleClient@{handleClient}}
+\index{handleClient@{handleClient}!server\_web@{server\_web}}
+\doxysubsubsection{\texorpdfstring{handleClient()}{handleClient()}}
+{\footnotesize\ttfamily void server\+\_\+web\+::handle\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles incoming client requests. 
+
+This function should be called in the main loop to continuously check for and respond to HTTP requests from clients. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/ehugo/\+Documents/\+Platform\+IO/\+Projects/\+ESP/src/\mbox{\hyperlink{server_8h}{server.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,35 @@
+\doxysection{buzzer.\+h}
+\hypertarget{buzzer_8h_source}{}\label{buzzer_8h_source}\index{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/buzzer.h@{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/buzzer.h}}
+\mbox{\hyperlink{buzzer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ BUZZER\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ BUZZER\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_buzzer}{Buzzer}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_buzzer_aa7e46d651dfac39d6cd6a4466e8e1a13}{Buzzer}}(\textcolor{keywordtype}{int}\ pin)\ :\ buzzerPin(pin)}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ pinMode(buzzerPin,\ OUTPUT);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_buzzer_ae2a25494b2bac014255e3f09a47ec17d}{playTone}}(\textcolor{keywordtype}{int}\ frequency,\ \textcolor{keywordtype}{int}\ duration)}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ tone(buzzerPin,\ frequency,\ duration);}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_buzzer_a60e7439353659cccc72ab618c2a41e90}{stopTone}}()}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ noTone(buzzerPin);}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ buzzerPin;\ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BUZZER\_H}}
+
+\end{DoxyCode}

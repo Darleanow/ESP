@@ -1,0 +1,30 @@
+\doxysection{C\+:/\+Users/ehugo/\+Documents/\+Platform\+IO/\+Projects/\+ESP/src/server.h File Reference}
+\hypertarget{server_8h}{}\label{server_8h}\index{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/server.h@{C:/Users/ehugo/Documents/PlatformIO/Projects/ESP/src/server.h}}
+
+
+Defines the \doxylink{classserver__web}{server\+\_\+web} class for handling a web server on an ESP32 device.  
+
+
+{\ttfamily \#include $<$Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include $<$Web\+Server.\+h$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classserver__web}{server\+\_\+web}}
+\begin{DoxyCompactList}\small\item\em Manages a web server on an ESP32 device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{server_8h_a8a2c776e7e8460f1b2e17155de1643ff}\label{server_8h_a8a2c776e7e8460f1b2e17155de1643ff} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries Toggle\+Function}) ()
+\begin{DoxyCompactList}\small\item\em Defines a function pointer type for toggling sensor state. \end{DoxyCompactList}\item 
+\Hypertarget{server_8h_ad6a209a556e722628a7c76efe97fb18b}\label{server_8h_ad6a209a556e722628a7c76efe97fb18b} 
+typedef std\+::function$<$ bool()$>$ {\bfseries Toggle\+Music\+Function}
+\begin{DoxyCompactList}\small\item\em Defines a function pointer type for toggling music playback state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{classserver__web}{server\+\_\+web} class for handling a web server on an ESP32 device. 
+
+This class sets up a web server on the ESP32, allowing control over various functionalities such as motion detection and music playback through HTTP requests. 
