@@ -1,3 +1,17 @@
+/**
+ * @file notes.h
+ * @brief Defines constants for musical note frequencies.
+ *
+ * This file contains a series of #define statements that map musical note names to their corresponding
+ * frequencies in Hertz. These definitions are used to play specific notes with buzzers or other sound
+ * generating components on a microcontroller.
+ */
+
+#ifndef NOTES_H
+#define NOTES_H
+
+// Frequencies for the notes in Hertz
+
 #define NOTE_B0 31
 #define NOTE_C1 33
 #define NOTE_CS1 35
@@ -88,61 +102,4 @@
 #define NOTE_D8 4699
 #define NOTE_DS8 4978
 
-int jingle_melody[] = {
-    NOTE_E4, NOTE_E4, NOTE_E4,                            // Jingle all the way
-    NOTE_E4, NOTE_E4, NOTE_E4,                            // Oh, what fun it is to ride
-    NOTE_E4, NOTE_G4, NOTE_C4, NOTE_D4,                   // In a one-horse open sleigh, hey
-    NOTE_E4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, // Jingle bells, jingle bells
-    NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4,          // Jingle all the way
-    NOTE_E4, NOTE_G4, NOTE_G4, NOTE_F4, NOTE_D4, NOTE_C4  // Oh, what fun it is to ride
-};
-int jingle_noteDurations[] = {
-    4, 4, 2,
-    4, 4, 2,
-    4, 4, 4, 4,
-    4, 4, 4, 4, 2,
-    4, 4, 4, 4, 2,
-    4, 4, 4, 4, 4, 4};
-
-int baila_melody[] = {
-    NOTE_E4, NOTE_G4, NOTE_A4, NOTE_B4, NOTE_A4, NOTE_G4, NOTE_E4,
-    NOTE_D4, NOTE_B4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4,
-    NOTE_G4, NOTE_E4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4,
-    NOTE_D4, NOTE_E4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_C4, NOTE_B3};
-
-int baila_durations[] = {
-    8, 8, 8, 8, 8, 8, 8,
-    8, 8, 8, 8, 8, 8, 8,
-    8, 8, 8, 8, 8, 8, 8,
-    8, 8, 8, 8, 8, 8, 8};
-
-int classic_melody[] = {
-    261, NOTE_E4, NOTE_G4, NOTE_C5,
-    NOTE_A4, NOTE_F4, NOTE_E4, NOTE_D4,
-    261, NOTE_D4, NOTE_E4, NOTE_F4,
-    NOTE_G4, NOTE_E4, 261, NOTE_G3};
-
-int classic_durations[] = {
-    4, 4, 4, 4,
-    8, 8, 8, 8,
-    8, 8, 8, 8,
-    4, 4, 4, 4};
-
-int lavandia_melody[] = {
-  659, 622, 659, 622, 659, 494, 587, 523, 440, 
-  415, 440, 523, 440, 523, 587, 
-  659, 622, 659, 622, 659, 494, 587, 523, 440, 
-  415, 440, 523, 440, 523, 587, 
-  784, 880, 987, 880, 784, 698, 784, 659, 587, 
-  659, 587, 523, 587, 494, 523
-};
-
-// Durées des notes
-int lavandia_noteDurations[] = {
-  12, 12, 12, 12, 12, 12, 12, 12, 12, 
-  12, 12, 12, 12, 12, 12, 
-  12, 12, 12, 12, 12, 12, 12, 12, 12, 
-  12, 12, 12, 12, 12, 12, 
-  12, 12, 12, 12, 12, 12, 12, 12, 12, 
-  12, 12, 12, 12, 12, 12
-};
+#endif // NOTES_H
