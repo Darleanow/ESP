@@ -1,4 +1,21 @@
+/**
+ * @file mario.h
+ * @brief Contains the melody and duration data for the Mario theme song.
+ *
+ * This file declares arrays that represent the melody (notes) and durations for each note
+ * in the Mario theme song. These arrays are used in conjunction with a buzzer system
+ * to play the melody.
+ */
+
 #include "notes.h"
+
+/**
+ * @var melody[]
+ * @brief Array of notes representing the Mario theme melody.
+ *
+ * This array contains the sequence of notes that make up the Mario theme song.
+ * Each element in the array corresponds to a specific musical note defined in 'notes.h'.
+ */
 int melody[] = {
     NOTE_E7,
     NOTE_E7,
@@ -243,7 +260,13 @@ int melody[] = {
     0,
     0};
 
-// Durations for the Mario theme melody
+/**
+ * @var durations[]
+ * @brief Array of note durations for the Mario theme melody.
+ *
+ * This array specifies the duration for each note in the melody array. The duration
+ * is given as a fraction of a whole note (e.g., 12 represents a twelfth of a whole note).
+ */
 int durations[] = {
     12,
     12,
