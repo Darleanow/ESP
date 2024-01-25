@@ -91,9 +91,9 @@ public:
     }
 
 private:
-    const char *network_ssid; ///< The SSID of the WiFi network.
+    const char *network_ssid;     ///< The SSID of the WiFi network.
     const char *network_password; ///< The password for the WiFi network.
-    WebServer server; ///< Instance of WebServer to manage HTTP requests.
+    WebServer server;             ///< Instance of WebServer to manage HTTP requests.
 
     String getHTML() ///< The HTML that will be used for the server page.
     {
@@ -208,8 +208,8 @@ private:
         return html;
     }
 
-    bool isMusicPlaying; ///< Track if music is playing.
-    ToggleFunction toggleSensor; ///< Toggle movement sensor.
+    bool isMusicPlaying;             ///< Track if music is playing.
+    ToggleFunction toggleSensor;     ///< Toggle movement sensor.
     ToggleMusicFunction toggleMusic; ///< Toggle music play.
 };
 

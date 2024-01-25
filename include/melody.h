@@ -81,8 +81,8 @@ public:
     }
 
 private:
-    Buzzer& melodyBuzzer; ///< Buzzer for playing melody notes.
-    Buzzer& drumBuzzer; ///< Buzzer for playing drum beats.
+    Buzzer &melodyBuzzer;        ///< Buzzer for playing melody notes.
+    Buzzer &drumBuzzer;          ///< Buzzer for playing drum beats.
     std::atomic<bool> isPlaying; ///< Atomic flag indicating whether music is currently playing.
 };
 

@@ -25,7 +25,7 @@ void toggleMotionDetection()
     motionSensor.toggleState();
 }
 
-Buzzer buzzer(32), buzzer2(33); ///< Buzzers connected to pins 32 and 33.
+Buzzer buzzer(32), buzzer2(33);       ///< Buzzers connected to pins 32 and 33.
 Melody melodyPlayer(buzzer2, buzzer); ///< Melody player using the two buzzers.
 
 /**
