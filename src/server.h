@@ -1,5 +1,5 @@
 /**
- * @file server_web.h
+ * @file server.h
  * @brief Defines the server_web class for handling a web server on an ESP32 device.
  *
  * This class sets up a web server on the ESP32, allowing control over various functionalities
